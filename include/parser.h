@@ -28,6 +28,8 @@ int getEdgesNum(const char *data);
 
 Graph_t *initGraph(int nodesNum, int edgesNum);
 
+void strToGraph(Graph_t *graph, char *data);
+
 void freeGraph(Graph_t *graph);
 
 #endif

@@ -55,8 +55,21 @@ Graph_t *initGraph(int nodesNum, int edgesNum) {
     return graph;
 }
 
+void strToGraph(Graph_t *graph, char *data) {
+    char *token;
+    for (int i = 0; i < graph->nodesNum; i++) {
+        for (int j = 0; j < graph->edgesNum; j++) {
+            token = strtok_r(data, "\n ", &data);
+            if (*token == '0')
+                graph->matrix[i][j] = false;
+            else if (*token == '1')
+                graph->matrix[i][j] = true;
+        }
+    }
+}
+
 void freeGraph(Graph_t *graph) {
-    for(int i = 0; i < graph->nodesNum; i++) {
+    for (int i = 0; i < graph->nodesNum; i++) {
         free(graph->matrix[i]);
     }
     free(graph->matrix);

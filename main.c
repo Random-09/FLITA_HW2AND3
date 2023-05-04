@@ -12,6 +12,7 @@ int main() {
     int edgesNum = getEdgesNum(data);
     Graph_t *graph = initGraph(nodesNum, edgesNum);
 
+    strToGraph(graph, data);
 
     freeGraph(graph);
     free(data);
@@ -19,7 +20,7 @@ int main() {
     return EXIT_SUCCESS;
 }
 
-
+// graph->graphPtr
 
 // strtok_r! strdup!
 
