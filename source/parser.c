@@ -43,36 +43,4 @@ int getEdgesNum(const char *data) {
     return count;
 }
 
-Graph_t *initGraph(int nodesNum, int edgesNum) {
-    Graph_t *graph = (Graph_t *) malloc(sizeof(Graph_t));
-    graph->nodesNum = nodesNum;
-    graph->edgesNum = edgesNum;
-    graph->matrix = (bool **) malloc(nodesNum * sizeof(bool *));
-    for (int i = 0; i < nodesNum; i++) {
-        graph->matrix[i] = (bool *) malloc(edgesNum * sizeof(bool));
-    }
-    graph->edges = (int *) malloc(edgesNum * sizeof(int));
-    return graph;
-}
 
-void strToGraph(Graph_t *graph, char *data) {
-    char *token;
-    for (int i = 0; i < graph->nodesNum; i++) {
-        for (int j = 0; j < graph->edgesNum; j++) {
-            token = strtok_r(data, "\n ", &data);
-            if (*token == '0')
-                graph->matrix[i][j] = false;
-            else if (*token == '1')
-                graph->matrix[i][j] = true;
-        }
-    }
-}
-
-void freeGraph(Graph_t *graph) {
-    for (int i = 0; i < graph->nodesNum; i++) {
-        free(graph->matrix[i]);
-    }
-    free(graph->matrix);
-    free(graph->edges);
-    free(graph);
-}

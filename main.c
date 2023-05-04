@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "include/parser.h"
+#include "include/graph.h"
+#include "include/stack.h"
 
 // Program that implements a graph data structure using incidence matrix
 
@@ -8,9 +10,9 @@ int main() {
     FILE *filePtr = openFile("../test.txt");
     int fileLen = getFileLen(filePtr);
     char *data = getData(filePtr, fileLen);
-    int nodesNum = getNodesNum(data, fileLen);
+    int verticesNum = getNodesNum(data, fileLen);
     int edgesNum = getEdgesNum(data);
-    Graph_t *graph = initGraph(nodesNum, edgesNum);
+    Graph_t *graph = initGraph(verticesNum, edgesNum);
 
     strToGraph(graph, data);
 
@@ -21,6 +23,7 @@ int main() {
 }
 
 // graph->graphPtr
+// data->buffer
 
 // strtok_r! strdup!
 

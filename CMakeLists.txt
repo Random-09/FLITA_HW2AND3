@@ -3,4 +3,4 @@ project(FLITA_HW2and3 C)
 
 set(CMAKE_C_STANDARD 11)
 
-add_executable(FLITA_HW2and3 main.c source/parser.c include/parser.h)
+add_executable(FLITA_HW2and3 main.c source/parser.c include/parser.h source/graph.c include/graph.h source/stack.c include/stack.h)
