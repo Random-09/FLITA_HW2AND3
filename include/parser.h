@@ -8,20 +8,26 @@
 
 #define MAX_LINE_LEN 50
 
-typedef struct Graph {
-    bool** matrix;
-    int* edges;
-    int numVertices;
-    int numEdges;
+typedef struct {
+    bool **matrix;
+    int *edges;
+    int nodesNum;
+    int edgesNum;
 } Graph_t;
 
 
-FILE* openFile(char *filePath);
+FILE *openFile(char *filePath);
 
-void createGraph();
+int getFileLen(FILE *filePtr);
 
-void freeGraph();
+char *getData(FILE *filePtr, int fileLen);
 
-void parse(FILE *filePtr);
+int getNodesNum(const char *data, int fileLen);
+
+int getEdgesNum(const char *data);
+
+Graph_t *initGraph(int nodesNum, int edgesNum);
+
+void freeGraph(Graph_t *graph);
 
 #endif
