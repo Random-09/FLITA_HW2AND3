@@ -13,9 +13,9 @@ int main() {
     int verticesNum = getNodesNum(data, fileLen);
     int edgesNum = getEdgesNum(data);
     Graph_t *graph = initGraph(verticesNum, edgesNum);
-
-    strToGraph(graph, data);
-
+//    strToGraph(graph, data);
+//    puts("!");
+//    printGraph(graph);
     freeGraph(graph);
     free(data);
     fclose(filePtr);
@@ -28,4 +28,3 @@ int main() {
 // strtok_r! strdup!
 
 // Automatic file loop 1...200
-// Vertices->Nodes

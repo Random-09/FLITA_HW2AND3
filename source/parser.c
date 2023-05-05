@@ -1,7 +1,7 @@
 #include "../include/parser.h"
 
 FILE *openFile(char *filePath) {
-    FILE *filePtr = fopen(filePath, "r");
+    FILE *filePtr = fopen(filePath, "rb");
     if (filePtr == NULL) {
         puts("Error opening file");
         exit(EXIT_FAILURE);
@@ -20,6 +20,7 @@ char *getData(FILE *filePtr, int fileLen) {
     char *data;
     data = (char *) malloc(sizeof(char) * fileLen);
     fread(data, sizeof(char), fileLen, filePtr);
+    printf("%s", data);
     return data;
 }
 
