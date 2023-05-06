@@ -8,5 +8,4 @@ void checkGraphConnection(Graph_t *graph);
 
 void dfs(Graph_t *graph, int vertex, bool *visitedVertices, int *verticesCount);
 
-
 #endif
