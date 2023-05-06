@@ -8,7 +8,6 @@
 
 typedef struct Graph {
     bool **matrix;
-    bool *visited;
     int verticesNum;
     int edgesNum;
 } Graph_t;

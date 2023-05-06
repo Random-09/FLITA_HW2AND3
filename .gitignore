@@ -1,4 +1,7 @@
 /.idea/
 /cmake-build-debug/
 /graphs/
+/outputs/
 test.txt
+output.png
+output.dot

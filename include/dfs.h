@@ -4,28 +4,9 @@
 #include <stdlib.h>
 #include "graph.h"
 
-typedef struct StackNode {
-    int vertex;
-    struct StackNode *next;
-} StackNode_t;
+void checkGraphConnection(Graph_t *graph);
 
-typedef struct LinkedListNode {
-    int vertex;
-    struct LinkedListNode *next;
-} LinkedListNode_t;
-
-void stackPush();
-
-int stackPop();
-
-LinkedListNode_t *createListNode();
-
-bool isInList();
-
-void freeLinkedList();
-
-
-void dfs(Graph_t *graph, int vertex, int *visited, int *numVertices, int *numEdges);
+void dfs(Graph_t *graph, int vertex, bool *visitedVertices, int *verticesCount);
 
 
 #endif

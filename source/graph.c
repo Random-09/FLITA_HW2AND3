@@ -8,11 +8,10 @@ Graph_t *initGraph(int verticesNum, int edgesNum) {
     for (int i = 0; i < verticesNum; i++) {
         graph->matrix[i] = (bool *) malloc(edgesNum * sizeof(bool));
     }
-//    graph->visited = (bool *) malloc(edgesNum * sizeof(bool));                <---- May not be necessary
     return graph;
 }
 
-void strToGraph(Graph_t *graph, char *data) {                   // <---- READS GARBAGE
+void strToGraph(Graph_t *graph, char *data) {
     char *token;
     for (int i = 0; i < graph->verticesNum; i++) {
         for (int j = 0; j < graph->edgesNum; j++) {
@@ -28,7 +27,7 @@ void strToGraph(Graph_t *graph, char *data) {                   // <---- READS G
     }
 }
 
-void drawGraph(Graph_t *graph, FILE *outputFilePtr, char *outputFileName, char *pngFileName) {          // rename drawGraph
+void drawGraph(Graph_t *graph, FILE *outputFilePtr, char *outputFileName, char *pngFileName) {
     fputs("digraph G {\n", outputFilePtr);
     fputs("\tedge[dir=none]\n", outputFilePtr);
     printf("%d %d", graph->verticesNum, graph->edgesNum);
@@ -56,9 +55,12 @@ void drawGraph(Graph_t *graph, FILE *outputFilePtr, char *outputFileName, char *
     }
     free(hasConnections);
     fputs("}", outputFilePtr);
-    char str[50];
+    fflush(outputFilePtr);
+    char *str;
+    str = (char *) malloc(50 * sizeof(char));
     sprintf(str, "dot -Tpng %s -o %s", outputFileName, pngFileName);
     system(str);
+    free(str);
 }
 
 void freeGraph(Graph_t *graph) {
@@ -66,6 +68,5 @@ void freeGraph(Graph_t *graph) {
         free(graph->matrix[i]);
     }
     free(graph->matrix);
-    free(graph->visited);
     free(graph);
 }

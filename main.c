@@ -9,7 +9,7 @@
 int main() {
     FILE *inputFilePtr = fopen("../test.txt", "rb");
     checkFile(inputFilePtr);
-    int inputFileLen = getFileLen(inputFilePtr);                          // <---- strlen
+    int inputFileLen = getFileLen(inputFilePtr);
     char *data = getData(inputFilePtr, inputFileLen);
     int verticesNum = getNodesNum(data, inputFileLen);
     int edgesNum = getEdgesNum(data);
@@ -22,6 +22,7 @@ int main() {
     checkFile(outputFilePtr);
     drawGraph(graph, outputFilePtr, "../output.dot", "../output.png");
     fclose(outputFilePtr);
+    checkGraphConnection(graph);
     freeGraph(graph);
     return EXIT_SUCCESS;
 }
