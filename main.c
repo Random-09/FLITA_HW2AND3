@@ -13,7 +13,6 @@ int main() {
     char *data = getData(inputFilePtr, inputFileLen);
     int verticesNum = getNodesNum(data, inputFileLen);
     int edgesNum = getEdgesNum(data);
-    printf("%d %d\n", edgesNum, verticesNum);
     Graph_t *graph = initGraph(verticesNum, edgesNum);
     strToGraph(graph, data);
     free(data);
