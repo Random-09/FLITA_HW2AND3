@@ -23,6 +23,7 @@ void strToGraph(Graph_t *graph, char *data) {
                 graph->matrix[i][j] = true;
             }
         }
+        puts("");
     }
 }
 
@@ -30,6 +31,7 @@ void drawGraph(Graph_t *graph, FILE *outputFilePtr, char *outputFileName, char *
     puts("!");
     fputs("digraph G {\n", outputFilePtr);
     fputs("\tedge[dir=none]\n", outputFilePtr);
+    printf("%d %d", graph->verticesNum, graph->edgesNum);
     bool *hasConnections;
     hasConnections = (bool *) calloc(graph->verticesNum, sizeof(bool));
     for (int i = 0; i < graph->edgesNum; i++) {
