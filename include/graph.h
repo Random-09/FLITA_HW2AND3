@@ -8,7 +8,7 @@
 
 typedef struct Graph {
     bool **matrix;
-//    bool *visited;            <---- May not be necessary
+    bool *visited;
     int verticesNum;
     int edgesNum;
 } Graph_t;
@@ -17,9 +17,7 @@ Graph_t *initGraph(int verticesNum, int edgesNum);
 
 void strToGraph(Graph_t *graph, char *data);
 
-void printGraph(Graph_t *graph);
-
-void graphToDot(Graph_t *graph);
+void drawGraph(Graph_t *graph, FILE *outputFilePtr, char *outputFileName, char *pngFileName);
 
 void freeGraph(Graph_t *graph);
 

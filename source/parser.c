@@ -1,32 +1,30 @@
 #include "../include/parser.h"
 
-FILE *openFile(char *filePath) {
-    FILE *filePtr = fopen(filePath, "rb");
+void checkFile(FILE *filePtr) {
     if (filePtr == NULL) {
         puts("Error opening file");
         exit(EXIT_FAILURE);
     }
-    return filePtr;
 }
 
-int getFileLen(FILE *filePtr) {
-    fseek(filePtr, 0, SEEK_END);
-    int fileLen = ftell(filePtr);
-    fseek(filePtr, 0, SEEK_SET);
+int getFileLen(FILE *inputFilePtr) {
+    fseek(inputFilePtr, 0, SEEK_END);
+    int fileLen = ftell(inputFilePtr) - 1; // Adjust necessary for correct work on Windows (otherwise reads garbage at EOF)
+    fseek(inputFilePtr, 0, SEEK_SET);
     return fileLen;
 }
 
-char *getData(FILE *filePtr, int fileLen) {
+char *getData(FILE *filePtr, int inputFileLen) {
     char *data;
-    data = (char *) malloc(sizeof(char) * fileLen);
-    fread(data, sizeof(char), fileLen, filePtr);
-    printf("%s", data);
+    data = (char *) malloc(sizeof(char) * inputFileLen);
+    fread(data, sizeof(char), inputFileLen, filePtr);
+    data[inputFileLen] = '\0';
     return data;
 }
 
-int getNodesNum(const char *data, int fileLen) {
+int getNodesNum(const char *data, int inputFileLen) {
     int count = 1;
-    for (int i = 0; i < fileLen; i++) {
+    for (int i = 0; i < inputFileLen; i++) {
         if (data[i] == '\n')
             count++;
     }
@@ -43,5 +41,3 @@ int getEdgesNum(const char *data) {
     }
     return count;
 }
-
-

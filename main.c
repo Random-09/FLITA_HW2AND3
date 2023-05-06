@@ -2,29 +2,29 @@
 #include <stdlib.h>
 #include "include/parser.h"
 #include "include/graph.h"
-#include "include/stack.h"
+#include "include/dfs.h"
 
 // Program that implements a graph data structure using incidence matrix
 
 int main() {
-    FILE *filePtr = openFile("../test.txt");
-    int fileLen = getFileLen(filePtr);
-    char *data = getData(filePtr, fileLen);
-    int verticesNum = getNodesNum(data, fileLen);
+    FILE *inputFilePtr = fopen("../test.txt", "rb");
+    checkFile(inputFilePtr);
+    int inputFileLen = getFileLen(inputFilePtr);                          // <---- strlen
+    char *data = getData(inputFilePtr, inputFileLen);
+    int verticesNum = getNodesNum(data, inputFileLen);
     int edgesNum = getEdgesNum(data);
+    printf("%d %d\n", edgesNum, verticesNum);
     Graph_t *graph = initGraph(verticesNum, edgesNum);
-//    strToGraph(graph, data);
-//    puts("!");
-//    printGraph(graph);
-    freeGraph(graph);
+    strToGraph(graph, data);
     free(data);
-    fclose(filePtr);
+    fclose(inputFilePtr);
+    FILE *outputFilePtr = fopen("../output.dot", "w");
+    checkFile(outputFilePtr);
+    drawGraph(graph, outputFilePtr, "../output.dot", "../output.png");
+    fclose(outputFilePtr);
+    freeGraph(graph);
     return EXIT_SUCCESS;
 }
 
 // graph->graphPtr
 // data->buffer
-
-// strtok_r! strdup!
-
-// Automatic file loop 1...200

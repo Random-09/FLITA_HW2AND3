@@ -7,13 +7,13 @@
 #include <stdbool.h>
 #include "graph.h"
 
-FILE *openFile(char *filePath);
+void checkFile(FILE *filePtr);
 
-int getFileLen(FILE *filePtr);
+int getFileLen(FILE *inputFilePtr);
 
-char *getData(FILE *filePtr, int fileLen);
+char *getData(FILE *inputFilePtr, int inputFileLen);
 
-int getNodesNum(const char *data, int fileLen);
+int getNodesNum(const char *data, int inputFileLen);
 
 int getEdgesNum(const char *data);
 
