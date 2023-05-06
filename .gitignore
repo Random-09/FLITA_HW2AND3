@@ -2,6 +2,7 @@
 /cmake-build-debug/
 /graphs/
 /outputs/
+/pngs/
 test.txt
 output.png
 output.dot

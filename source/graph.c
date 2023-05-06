@@ -27,6 +27,7 @@ void strToGraph(Graph_t *graph, char *data) {
 }
 
 void drawGraph(Graph_t *graph, FILE *outputFilePtr, char *outputFileName, char *pngFileName) {
+    puts("!");
     fputs("digraph G {\n", outputFilePtr);
     fputs("\tedge[dir=none]\n", outputFilePtr);
     bool *hasConnections;
@@ -42,23 +43,23 @@ void drawGraph(Graph_t *graph, FILE *outputFilePtr, char *outputFileName, char *
             }
         }
         if (connectionCounter > 0) {
-            if (connectionCounter == 1)
+            if (connectionCounter == 1) {
                 buffer[1] = buffer[0];
+            }
             fprintf(outputFilePtr, "\ta%d -> a%d\n", buffer[0], buffer[1]);
         }
     }
     for (int k = 0; k < graph->verticesNum; k++) {
-        if (!hasConnections[k])
+        if (!hasConnections[k]) {
             fprintf(outputFilePtr, "\ta%d\n", k);
+        }
     }
     free(hasConnections);
     fputs("}", outputFilePtr);
     fflush(outputFilePtr);
-    char *str;
-    str = (char *) malloc(50 * sizeof(char));
+    char str[100];
     sprintf(str, "dot -Tpng %s -o %s", outputFileName, pngFileName);
     system(str);
-    free(str);
 }
 
 void freeGraph(Graph_t *graph) {
