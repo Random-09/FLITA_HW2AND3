@@ -11,18 +11,19 @@ typedef struct StackNode {
 
 typedef struct LinkedListNode {
     int vertex;
-    struct LinkedList *next;
+    struct LinkedListNode *next;
 } LinkedListNode_t;
 
 void stackPush();
 
 int stackPop();
 
-void createListNode();
+LinkedListNode_t *createListNode();
+
+bool isInList();
 
 void freeLinkedList();
 
-void
 
 void dfs(Graph_t *graph, int vertex, int *visited, int *numVertices, int *numEdges);
 
